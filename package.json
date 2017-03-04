@@ -8,12 +8,12 @@
     "build:storybook": "build-storybook",
     "deploy:storybook": "gh-pages -d storybook-static",
     "clean": "rimraf dist",
-    "storybook": "./node_modules/.bin/start-storybook -p 9001",
-    "test": "./node_modules/.bin/mocha --require jsdom-global/register --require tests/helpers/setup.js tests/specs/*.spec.js",
-    "test:coverage": "NODE_ENV=test ./node_modules/.bin/nyc --reporter=html --reporter=text ./node_modules/.bin/mocha --require jsdom-global/register --require tests/helpers/setup.js tests/specs/*.spec.js",
-    "test:file": "./node_modules/.bin/mocha --require jsdom-global/register --require tests/helpers/setup.js ",
-    "lint": "./node_modules/.bin/eslint src",
-    "lint:fix": "./node_modules/.bin/eslint src --fix"
+    "storybook": "start-storybook -p 9001",
+    "test": "mocha --require jsdom-global/register --require tests/helpers/setup.js tests/specs/*.spec.js",
+    "test:coverage": "NODE_ENV=test nyc --reporter=html --reporter=text mocha --require jsdom-global/register --require tests/helpers/setup.js tests/specs/*.spec.js",
+    "test:file": "mocha --require jsdom-global/register --require tests/helpers/setup.js ",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix"
   },
   "nyc": {
     "lines": 0,
