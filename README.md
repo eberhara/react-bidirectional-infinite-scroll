@@ -39,7 +39,7 @@ render() {
 }
 ```
 
-Please take a look at [examples folder](./examples) for a more complete example.
+Take a look at [examples folder](./examples) for a complete example.
 
 
 ## License
