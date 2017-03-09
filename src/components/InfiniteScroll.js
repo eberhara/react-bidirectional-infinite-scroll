@@ -7,24 +7,55 @@ class InfiniteScroll extends React.Component {
     }
 
     handleScroll() {
-        const { firstChild, lastChild, scrollTop, offsetTop, offsetHeight } = this.refs.scroller;
-        const top = firstChild.offsetTop;
-        const bottom = lastChild.offsetTop + lastChild.offsetHeight;
-        const scrollUp = scrollTop + offsetTop;
-        const scrollDown = scrollUp + offsetHeight;
+        const {
+            firstChild,
+            lastChild,
+            scrollTop,
+            scrollLeft,
+            offsetTop,
+            offsetLeft,
+            offsetHeight,
+            offsetWidth,
+        } = this.refs.scroller;
 
-        if (scrollDown >= bottom) {
-            this.props.onReachBottom();
-        } else if (scrollUp <= top) {
-            this.props.onReachTop();
+        const top = firstChild.offsetTop;
+        const left = firstChild.offsetLeft;
+        const bottom = lastChild.offsetTop + lastChild.offsetHeight;
+        const right = lastChild.offsetLeft + lastChild.offsetWidth;
+        const scrolledUp = scrollTop + offsetTop;
+        const scrolledLeft = scrollLeft + offsetLeft;
+        const scrolledDown = scrolledUp + offsetHeight;
+        const scrolledRight = scrolledLeft + offsetWidth;
+
+        if (this.props.horizontal) {
+            if (scrolledRight >= right) {
+                this.props.onReachRight();
+            } else if (scrolledLeft <= left) {
+                this.props.onReachLeft();
+            }
+        } else {
+            if (scrolledDown >= bottom) {
+                this.props.onReachBottom();
+            } else if (scrolledUp <= top) {
+                this.props.onReachTop();
+            }
         }
     }
 
     render() {
+        const whiteSpace = this.props.horizontal
+            ? 'nowrap'
+            : 'normal';
+
         return (
             <div
                 ref="scroller"
-                style={{ overflow: 'auto', height: '100%' }}
+                style={{
+                    overflow: 'auto',
+                    height: '100%',
+                    width: '100%',
+                    whiteSpace,
+                }}
                 onScroll={this.handleScroll}
             >
                 {this.props.children}
@@ -35,13 +66,18 @@ class InfiniteScroll extends React.Component {
 
 InfiniteScroll.propTypes = {
     children: PropTypes.node.isRequired,
+    horizontal: PropTypes.bool,
     onReachBottom: PropTypes.func,
     onReachTop: PropTypes.func,
+    onReachLeft: PropTypes.func,
+    onReachRight: PropTypes.func,
 };
 
 InfiniteScroll.defaultProps = {
     onReachBottom: f => f,
     onReachTop: f => f,
+    onReachLeft: f => f,
+    onReachRight: f => f,
 };
 
 export default InfiniteScroll;

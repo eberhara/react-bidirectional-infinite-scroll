@@ -24,12 +24,24 @@ import InfiniteScroll from 'react-bidirectional-infinite-scroll';
 
 render() {
 	return (
+		/// Vertical infinite scroll
 		<InfiniteScroll onReachBottom={f => f} onReachTop={f => f} >
 			// ... here goes your infinite list
+		</InfiniteScroll>
+
+		/// Horizontal infinite scroll
+		<InfiniteScroll
+            onReachLeft={f => f}
+            onReachRight={f => f}
+            horizontal
+        >
+        	// ... here goes your infinite list
 		</InfiniteScroll>
 	);
 }
 ```
+
+Please take a look at [examples folder](./examples) for a more complete example.
 
 
 ## License
