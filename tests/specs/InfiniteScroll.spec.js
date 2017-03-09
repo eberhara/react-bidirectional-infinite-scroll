@@ -8,6 +8,10 @@ import InfiniteScroll from '../../src';
 describe('<InfiniteScroll />', () => {
     it('should render with no props', () => {
         const wrapper = shallow(<InfiniteScroll>foo</InfiniteScroll>);
+        wrapper.instance().props.onReachBottom();
+        wrapper.instance().props.onReachTop();
+        wrapper.instance().props.onReachRight();
+        wrapper.instance().props.onReachLeft();
         expect(wrapper.text()).to.equal('foo');
     });
 
@@ -103,5 +107,100 @@ describe('<InfiniteScroll />', () => {
         wrapper.instance().handleScroll();
         expect(onReachTop.calledOnce).to.equal(false);
         expect(onReachBottom.calledOnce).to.equal(false);
+    });
+
+    it('should render a horizontal scroll and reach right', () => {
+        const onReachRight = sinon.stub();
+        const wrapper = shallow(
+            <InfiniteScroll onReachRight={onReachRight} horizontal>foo</InfiniteScroll>
+        );
+        wrapper.instance().refs = {
+            scroller: {
+                firstChild: {
+                    offsetTop: 0,
+                    offsetLeft: 0,
+                },
+                lastChild: {
+                    offsetTop: 0,
+                    offsetHeight: 100,
+                    offsetLeft: 100,
+                    offsetWidth: 100,
+                },
+                scrollTop: 0,
+                offsetTop: 0,
+                scrollLeft: 100,
+                offsetLeft: 0,
+                offsetHeight: 100,
+                offsetWidth: 100,
+            },
+        };
+        wrapper.instance().handleScroll();
+        expect(onReachRight.calledOnce).to.equal(true);
+    });
+
+    it('should render a horizontal scroll and reach left', () => {
+        const onReachLeft = sinon.stub();
+        const wrapper = shallow(
+            <InfiniteScroll onReachLeft={onReachLeft} horizontal>foo</InfiniteScroll>
+        );
+        wrapper.instance().refs = {
+            scroller: {
+                firstChild: {
+                    offsetTop: 0,
+                    offsetLeft: 0,
+                },
+                lastChild: {
+                    offsetTop: 0,
+                    offsetHeight: 100,
+                    offsetLeft: 100,
+                    offsetWidth: 100,
+                },
+                scrollTop: 0,
+                offsetTop: 0,
+                scrollLeft: 0,
+                offsetLeft: 0,
+                offsetHeight: 100,
+                offsetWidth: 100,
+            },
+        };
+        wrapper.instance().handleScroll();
+        expect(onReachLeft.calledOnce).to.equal(true);
+    });
+
+    it('should render a horizontal scroll and not callback when left/right are not reached', () => {
+        const onReachLeft = sinon.stub();
+        const onReachRight = sinon.stub();
+        const wrapper = shallow(
+            <InfiniteScroll
+                onReachLeft={onReachLeft}
+                onReachRight={onReachRight}
+                horizontal
+            >
+                foo
+            </InfiniteScroll>
+        );
+        wrapper.instance().refs = {
+            scroller: {
+                firstChild: {
+                    offsetTop: 0,
+                    offsetLeft: 0,
+                },
+                lastChild: {
+                    offsetTop: 0,
+                    offsetHeight: 100,
+                    offsetLeft: 100,
+                    offsetWidth: 100,
+                },
+                scrollTop: 0,
+                offsetTop: 0,
+                scrollLeft: 10,
+                offsetLeft: 0,
+                offsetHeight: 100,
+                offsetWidth: 100,
+            },
+        };
+        wrapper.instance().handleScroll();
+        expect(onReachLeft.calledOnce).to.equal(false);
+        expect(onReachRight.calledOnce).to.equal(false);
     });
 });

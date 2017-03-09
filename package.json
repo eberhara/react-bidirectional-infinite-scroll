@@ -17,7 +17,7 @@
     "report": "nyc report --reporter=text-lcov | coveralls"
   },
   "nyc": {
-    "lines": 71,
+    "lines": 99,
     "check-coverage": true,
     "exclude": [
       "tests",
