@@ -1,6 +1,6 @@
 {
   "name": "react-bidirectional-infinite-scroll",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "Bidirectional infinite scroll written using react",
   "main": "dist/index.js",
   "scripts": {
