@@ -6,7 +6,8 @@
 
 **Bidirectional infinite scroll written using react**
 
-This is a react library that handles infinite scrolling in any direction: UP, DOWN, LEFT, RIGHT.
+This is a react library that handles infinite scrolling in two directions at the same time: UP/DOWN or LEFT/RIGHT.
+See it working at [eberhara.github.io/react-bidirectional-infinite-scroll](https://eberhara.github.io/react-bidirectional-infinite-scroll).
 
 
 ## Installation
@@ -30,11 +31,7 @@ render() {
 		</InfiniteScroll>
 
 		/// Horizontal infinite scroll
-		<InfiniteScroll
-            onReachLeft={f => f}
-            onReachRight={f => f}
-            horizontal
-        >
+		<InfiniteScroll onReachLeft={f => f} onReachRight={f => f} horizontal>
         	// ... here goes your infinite list
 		</InfiniteScroll>
 	);
