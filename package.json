@@ -14,7 +14,7 @@
     "test:file": "mocha --require jsdom-global/register --require tests/helpers/setup.js ",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
-    "report": "echo \"No report specified\" && exit 0"
+    "report": "nyc report --reporter=text-lcov | coveralls"
   },
   "nyc": {
     "lines": 0,
@@ -54,6 +54,7 @@
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.23.0",
     "chai": "^3.5.0",
+    "coveralls": "^2.12.0",
     "enzyme": "^2.7.1",
     "eslint": "^2.13.1",
     "eslint-config-airbnb": "^9.0.1",
@@ -66,8 +67,8 @@
     "mocha": "^2.5.3",
     "nyc": "^7.1.0",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
+    "react-dom": "^15.4.2",
     "rimraf": "^2.6.0",
     "sinon": "^1.17.7",
     "webpack-hot-middleware": "^2.17.0"
