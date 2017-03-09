@@ -12,21 +12,23 @@ This is a react library that handles infinite scrolling in any direction: UP, DO
 ## Installation
 
 ```bash
-  npm i --save react-bidirectional-infinite-scroll
+npm i --save react-bidirectional-infinite-scroll
 ```
-
-```javascript
-var Migration = require('mongration').Migration;
-```
-
 
 ## Usage
 
 ```javascript
 import InfiniteScroll from 'react-bidirectional-infinite-scroll';
 
-<InfiniteScroll onReachBottom={f => f} onReachTop={f => f} >
+...
 
+render() {
+	return (
+		<InfiniteScroll onReachBottom={f => f} onReachTop={f => f} >
+			... here goes your infinite list
+		</InfiniteScroll>
+	);
+}
 ```
 
 
