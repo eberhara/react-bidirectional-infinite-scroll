@@ -25,7 +25,7 @@ import InfiniteScroll from 'react-bidirectional-infinite-scroll';
 render() {
 	return (
 		<InfiniteScroll onReachBottom={f => f} onReachTop={f => f} >
-			... here goes your infinite list
+			// ... here goes your infinite list
 		</InfiniteScroll>
 	);
 }
