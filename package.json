@@ -13,7 +13,8 @@
     "test:coverage": "NODE_ENV=test nyc --reporter=html --reporter=text mocha --require jsdom-global/register --require tests/helpers/setup.js tests/specs/*.spec.js",
     "test:file": "mocha --require jsdom-global/register --require tests/helpers/setup.js ",
     "lint": "eslint src",
-    "lint:fix": "eslint src --fix"
+    "lint:fix": "eslint src --fix",
+    "report": "echo \"No report specified\" && exit 0"
   },
   "nyc": {
     "lines": 0,
