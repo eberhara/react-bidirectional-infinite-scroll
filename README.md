@@ -1,10 +1,10 @@
 # react-bidirectional-infinite-scroll
-===
+
 [![build status](https://travis-ci.org/eberhara/react-bidirectional-infinite-scroll.svg?branch=master)](https://travis-ci.org/eberhara/react-bidirectional-infinite-scroll)
 [![Coverage Status](https://coveralls.io/repos/eberhara/react-bidirectional-infinite-scroll/badge.svg)](https://coveralls.io/r/eberhara/react-bidirectional-infinite-scroll)
 [![NPM version](http://img.shields.io/npm/v/react-bidirectional-infinite-scroll.svg)](https://www.npmjs.org/package/react-bidirectional-infinite-scroll)
 
-> Bidirectional infinite scroll written using react
+**Bidirectional infinite scroll written using react**
 
 This is a react library that handles infinite scrolling in any direction: UP, DOWN, LEFT, RIGHT.
 
