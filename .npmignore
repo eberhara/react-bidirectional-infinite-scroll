@@ -1,3 +1,8 @@
 coverage
 tests
 .nyc_output
+.storybook
+storybook-static
+.editorconfig
+.eslintrc
+.npmignore
