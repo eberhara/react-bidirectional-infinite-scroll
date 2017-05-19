@@ -6,6 +6,39 @@ class InfiniteScroll extends React.Component {
         this.handleScroll = this.handleScroll.bind(this);
     }
 
+    componentDidMount() {
+        const {
+            position,
+        } = this.props;
+
+        if (!!position) {
+            this.setScrollPosition();
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        const {
+            position,
+        } = this.props;
+
+        if (!!position && !prevProps.position) {
+            this.setScrollPosition();
+        }
+    }
+
+    setScrollPosition() {
+        const {
+            position,
+            horizontal,
+        } = this.props;
+
+        if (horizontal) {
+            this.refs.scroller.scrollLeft = position;
+        } else {
+            this.refs.scroller.scrollTop = position;
+        }
+    }
+
     handleScroll() {
         const {
             firstChild,
@@ -18,6 +51,15 @@ class InfiniteScroll extends React.Component {
             offsetWidth,
         } = this.refs.scroller;
 
+        const {
+            horizontal,
+            onScroll,
+            onReachRight,
+            onReachLeft,
+            onReachTop,
+            onReachBottom,
+        } = this.props;
+
         const top = firstChild.offsetTop;
         const left = firstChild.offsetLeft;
         const bottom = lastChild.offsetTop + lastChild.offsetHeight;
@@ -26,20 +68,25 @@ class InfiniteScroll extends React.Component {
         const scrolledLeft = scrollLeft + offsetLeft;
         const scrolledDown = scrolledUp + offsetHeight;
         const scrolledRight = scrolledLeft + offsetWidth;
+        let scrolledTo = 0;
 
-        if (this.props.horizontal) {
+        if (horizontal) {
             if (scrolledRight >= right) {
-                this.props.onReachRight();
+                onReachRight();
             } else if (scrolledLeft <= left) {
-                this.props.onReachLeft();
+                onReachLeft();
             }
+            scrolledTo = scrollLeft;
         } else {
             if (scrolledDown >= bottom) {
-                this.props.onReachBottom();
+                onReachBottom();
             } else if (scrolledUp <= top) {
-                this.props.onReachTop();
+                onReachTop();
             }
+            scrolledTo = scrollTop;
         }
+
+        onScroll(scrolledTo);
     }
 
     render() {
@@ -71,6 +118,8 @@ InfiniteScroll.propTypes = {
     onReachTop: PropTypes.func,
     onReachLeft: PropTypes.func,
     onReachRight: PropTypes.func,
+    onScroll: PropTypes.func,
+    position: PropTypes.number,
 };
 
 InfiniteScroll.defaultProps = {
@@ -78,6 +127,8 @@ InfiniteScroll.defaultProps = {
     onReachTop: f => f,
     onReachLeft: f => f,
     onReachRight: f => f,
+    onScroll: f => f,
+    position: 0,
 };
 
 export default InfiniteScroll;
