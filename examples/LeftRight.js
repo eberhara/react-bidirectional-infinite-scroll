@@ -10,6 +10,7 @@ export default class LeftRightExample extends React.Component {
         this.getItems = this.getItems.bind(this);
         this.handleScrollLeft = this.handleScrollLeft.bind(this);
         this.handleScrollRight = this.handleScrollRight.bind(this);
+        this.handleOnScroll = this.handleOnScroll.bind(this);
     }
 
     componentWillMount() {
@@ -59,12 +60,18 @@ export default class LeftRightExample extends React.Component {
         }, 500);
     }
 
+    handleOnScroll(position) {
+        console.log('Scroll to ', position);
+    }
+
     render() {
         return (
-            <div style={{ width : '200px', height: '200px' }}>
+            <div style={{ width: '200px', height: '200px' }}>
                 <InfiniteScroll
                     onReachLeft={this.handleScrollLeft}
                     onReachRight={this.handleScrollRight}
+                    onScroll={this.handleOnScroll}
+                    position={10}
                     horizontal
                 >
                     {this.state.items}

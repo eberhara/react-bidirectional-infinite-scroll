@@ -10,6 +10,7 @@ export default class UpDownExample extends React.Component {
         this.getItems = this.getItems.bind(this);
         this.handleScrollDown = this.handleScrollDown.bind(this);
         this.handleScrollUp = this.handleScrollUp.bind(this);
+        this.handleOnScroll = this.handleOnScroll.bind(this);
     }
 
     componentWillMount() {
@@ -57,12 +58,18 @@ export default class UpDownExample extends React.Component {
         }, 500);
     }
 
+    handleOnScroll(position) {
+        console.log('Scroll to ', position);
+    }
+
     render() {
         return (
             <div style={{ height: '200px', width: '300px' }}>
                 <InfiniteScroll
                     onReachBottom={this.handleScrollDown}
                     onReachTop={this.handleScrollUp}
+                    onScroll={this.handleOnScroll}
+                    position={50}
                 >
                     {this.state.items}
                 </InfiniteScroll>
