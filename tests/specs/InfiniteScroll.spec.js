@@ -12,7 +12,58 @@ describe('<InfiniteScroll />', () => {
         wrapper.instance().props.onReachTop();
         wrapper.instance().props.onReachRight();
         wrapper.instance().props.onReachLeft();
+        wrapper.instance().componentDidMount();
+        wrapper.instance().componentDidUpdate({});
         expect(wrapper.text()).to.equal('foo');
+    });
+
+    it('should call setScrollPosition on mount and update', () => {
+        const wrapper = shallow(
+            <InfiniteScroll
+                position={50}
+            >
+                foo
+            </InfiniteScroll>
+        );
+        wrapper.instance().setScrollPosition = sinon.stub();
+        wrapper.instance().componentDidMount();
+        wrapper.instance().componentDidUpdate({});
+        expect(wrapper.instance().setScrollPosition.calledTwice).to.equal(true);
+    });
+
+    it('should render vertical with initial scroll position', () => {
+        const wrapper = shallow(
+            <InfiniteScroll
+                position={50}
+            >
+                foo
+            </InfiniteScroll>
+        );
+        wrapper.instance().refs = {
+            scroller: {
+                scrollTop: 0,
+            },
+        };
+        wrapper.instance().setScrollPosition();
+        expect(wrapper.instance().refs.scroller.scrollTop).to.equal(50);
+    });
+
+    it('should render horizontal with initial scroll position', () => {
+        const wrapper = shallow(
+            <InfiniteScroll
+                horizontal
+                position={50}
+            >
+                foo
+            </InfiniteScroll>
+        );
+        wrapper.instance().refs = {
+            scroller: {
+                scrollLeft: 0,
+            },
+        };
+        wrapper.instance().setScrollPosition();
+        expect(wrapper.instance().refs.scroller.scrollLeft).to.equal(50);
     });
 
     it('should render a vertical scroll and reach bottom', () => {
