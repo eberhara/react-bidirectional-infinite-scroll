@@ -21,7 +21,7 @@ class InfiniteScroll extends React.Component {
             position,
         } = this.props;
 
-        if (!!position && !prevProps.position) {
+        if (!!position && position !== prevProps.position) {
             this.setScrollPosition();
         }
     }
