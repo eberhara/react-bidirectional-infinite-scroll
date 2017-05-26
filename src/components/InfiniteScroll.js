@@ -101,6 +101,7 @@ class InfiniteScroll extends React.Component {
                     overflow: 'auto',
                     height: 'inherit',
                     width: 'inherit',
+                    WebkitOverflowScrolling: 'inherit',
                     whiteSpace,
                 }}
                 onScroll={this.handleScroll}
