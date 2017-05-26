@@ -8,7 +8,7 @@
 
 This is a react library that handles infinite scrolling in two directions at the same time: UP/DOWN or LEFT/RIGHT.
 
-See it working at [eberhara.github.io/react-bidirectional-infinite-scroll](https://eberhara.github.io/react-bidirectional-infinite-scroll).
+See it working at [eberhara.github.io/react-bidirectional-infinite-scroll/](https://eberhara.github.io/react-bidirectional-infinite-scroll/).
 
 
 ## Installation
