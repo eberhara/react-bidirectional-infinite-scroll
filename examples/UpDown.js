@@ -64,7 +64,13 @@ export default class UpDownExample extends React.Component {
 
     render() {
         return (
-            <div style={{ height: '200px', width: '300px' }}>
+            <div
+                style={{
+                    height: '200px',
+                    width: '300px',
+                    WebkitOverflowScrolling: 'touch',
+                }}
+            >
                 <InfiniteScroll
                     onReachBottom={this.handleScrollDown}
                     onReachTop={this.handleScrollUp}

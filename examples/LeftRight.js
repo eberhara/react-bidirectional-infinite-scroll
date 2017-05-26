@@ -66,7 +66,13 @@ export default class LeftRightExample extends React.Component {
 
     render() {
         return (
-            <div style={{ width: '200px', height: '200px' }}>
+            <div
+                style={{
+                    width: '200px',
+                    height: '200px',
+                    WebkitOverflowScrolling: 'touch',
+                }}
+            >
                 <InfiniteScroll
                     onReachLeft={this.handleScrollLeft}
                     onReachRight={this.handleScrollRight}
