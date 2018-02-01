@@ -1,5 +1,5 @@
 import React from 'react';
-import InfiniteScroll from './InfiniteScroll'
+import InfiniteScroll from './src'
 
 export default class LeftRightExample extends React.Component {
     constructor(props) {
