@@ -81,7 +81,7 @@ export default class UpDownExample extends React.Component {
                     WebkitOverflowScrolling: 'touch',
                 }}
             >
-                InfiniteScroll
+                <InfiniteScroll
                     onReachBottom={this.handleScrollDown}
                     onReachTop={this.handleScrollUp}
                     onScroll={this.handleOnScroll}
