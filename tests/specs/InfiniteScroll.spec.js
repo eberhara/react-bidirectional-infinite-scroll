@@ -256,6 +256,7 @@ describe('<InfiniteScroll />', () => {
     });
 
     it('should render vertical fire onScrollDown', () => {
+        const onScrollDown = sinon.stub();
         const wrapper = shallow(
             <InfiniteScroll
                 onScrollDown={onScrollDown}
