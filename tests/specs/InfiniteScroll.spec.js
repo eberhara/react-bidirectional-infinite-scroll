@@ -322,6 +322,41 @@ describe('<InfiniteScroll />', () => {
         expect(onScrollDown.calledOnce).to.equal(true);
     });
 
+it('should render a horizontal scroll and fire onScrollLeft', () => {
+        const onScrollLeft = sinon.stub();
+        const wrapper = shallow(
+            <InfiniteScroll
+                onScrollLeft={onScrollLeft}
+            >
+                foo
+            </InfiniteScroll>
+        );
+        wrapper.instance().lastScrollLeft = 50;
+
+        wrapper.instance().refs = {
+            scroller: {
+                firstChild: {
+                    offsetTop: 0,
+                    offsetLeft: 0,
+                },
+                lastChild: {
+                    offsetTop: 0,
+                    offsetHeight: 100,
+                    offsetLeft: 100,
+                    offsetWidth: 100,
+                },
+                scrollTop: 0,
+                offsetTop: 0,
+                scrollLeft: 10,
+                offsetLeft: 0,
+                offsetHeight: 100,
+                offsetWidth: 100,
+            },
+        };
+        wrapper.instance().handleScroll();
+        expect(onScrollLeft.calledOnce).to.equal(true);
+    });
+
     it('should render a horizontal scroll and fire onScrollRight', () => {
         const onScrollRight = sinon.stub();
         const wrapper = shallow(
