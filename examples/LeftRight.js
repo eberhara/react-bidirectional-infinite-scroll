@@ -11,6 +11,8 @@ export default class LeftRightExample extends React.Component {
         this.handleScrollLeft = this.handleScrollLeft.bind(this);
         this.handleScrollRight = this.handleScrollRight.bind(this);
         this.handleOnScroll = this.handleOnScroll.bind(this);
+        this.handleOnScrollLeft = this.handleOnScrollLeft.bind(this);
+        this.handleOnScrollRight = this.handleOnScrollRight.bind(this);
     }
 
     componentWillMount() {
