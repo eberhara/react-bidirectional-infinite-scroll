@@ -254,4 +254,37 @@ describe('<InfiniteScroll />', () => {
         expect(onReachLeft.calledOnce).to.equal(false);
         expect(onReachRight.calledOnce).to.equal(false);
     });
+
+    it('should render vertical fire onScrollDown', () => {
+        const wrapper = shallow(
+            <InfiniteScroll
+                onScrollDown={onScrollDown}
+            >
+                foo
+            </InfiniteScroll>
+        );
+        wrapper.instance().refs = {
+            scroller: {
+                firstChild: {
+                    offsetTop: 0,
+                    offsetLeft: 0,
+                },
+                lastChild: {
+                    offsetTop: 100,
+                    offsetHeight: 100,
+                    offsetLeft: 0,
+                    offsetWidth: 100,
+                },
+                scrollTop: 10,
+                offsetTop: 0,
+                scrollLeft: 10,
+                offsetLeft: 0,
+                offsetHeight: 100,
+                offsetWidth: 100,
+            },
+        };
+        wrapper.instance().handleScroll();
+        expect(onScrollDown.calledOnce).to.equal(true);
+        // expect(onScrollRight.calledOnce).to.equal(true);
+    });
 });
