@@ -267,11 +267,11 @@ describe('<InfiniteScroll />', () => {
         wrapper.instance().refs = {
             scroller: {
                 firstChild: {
-                    offsetTop: 100,
+                    offsetTop: 0,
                     offsetLeft: 0,
                 },
                 lastChild: {
-                    offsetTop: 0,
+                    offsetTop: 100,
                     offsetHeight: 100,
                     offsetLeft: 0,
                     offsetWidth: 100,
