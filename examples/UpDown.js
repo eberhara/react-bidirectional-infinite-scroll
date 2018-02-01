@@ -1,5 +1,5 @@
 import React from 'react';
-import InfiniteScroll from './src'
+import InfiniteScroll from '../src'
 
 export default class UpDownExample extends React.Component {
     constructor(props) {
