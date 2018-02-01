@@ -5,8 +5,8 @@ class InfiniteScroll extends React.Component {
     constructor(props) {
         super(props);
         this.handleScroll = this.handleScroll.bind(this);
-        this.lastScrollTop = 0
-        this.lastScrollLeft = 0
+        this.lastScrollTop = 0;
+        this.lastScrollLeft = 0;
     }
 
     componentDidMount() {
@@ -94,19 +94,19 @@ class InfiniteScroll extends React.Component {
         }
 
         if (scrollTop < this.lastScrollTop) {
-            onScrollUp(scrollTop)
+            onScrollUp(scrollTop);
         } else if (scrollTop > this.lastScrollTop) {
-            onScrollDown(scrollTop)
+            onScrollDown(scrollTop);
         }
 
         if (scrollLeft < this.lastScrollLeft) {
-            onScrollLeft(scrollLeft)
+            onScrollLeft(scrollLeft);
         } else if (scrollLeft > this.lastScrollLeft) {
-            onScrollRight(scrollLeft)
+            onScrollRight(scrollLeft);
         }
 
-        this.lastScrollTop = scrollTop
-        this.lastScrollLeft = scrollLeft
+        this.lastScrollTop = scrollTop;
+        this.lastScrollLeft = scrollLeft;
 
         onScroll(scrolledTo);
     }
