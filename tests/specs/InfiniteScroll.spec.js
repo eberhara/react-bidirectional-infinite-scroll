@@ -12,6 +12,10 @@ describe('<InfiniteScroll />', () => {
         wrapper.instance().props.onReachTop();
         wrapper.instance().props.onReachRight();
         wrapper.instance().props.onReachLeft();
+        wrapper.instance().props.onScrollUp();
+        wrapper.instance().props.onScrollDown();
+        wrapper.instance().props.onScrollLeft();
+        wrapper.instance().props.onScrollRight();
         wrapper.instance().componentDidMount();
         wrapper.instance().componentDidUpdate({});
         expect(wrapper.text()).to.equal('foo');
