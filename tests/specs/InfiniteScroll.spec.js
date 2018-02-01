@@ -256,7 +256,7 @@ describe('<InfiniteScroll />', () => {
     });
 
     it('should render a vertical scroll and fire onScrollUp', () => {
-        const onScrollDown = sinon.stub();
+        const onScrollUp = sinon.stub();
         const wrapper = shallow(
             <InfiniteScroll
                 onScrollUp={onScrollUp}
@@ -264,6 +264,7 @@ describe('<InfiniteScroll />', () => {
                 foo
             </InfiniteScroll>
         );
+        wrapper.instance().lastScrollTop = 50;
         wrapper.instance().refs = {
             scroller: {
                 firstChild: {
