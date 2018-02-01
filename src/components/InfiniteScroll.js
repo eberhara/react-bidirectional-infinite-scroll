@@ -1,9 +1,12 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 class InfiniteScroll extends React.Component {
     constructor(props) {
         super(props);
         this.handleScroll = this.handleScroll.bind(this);
+        this.lastScrollTop = 0
+        this.lastScrollLeft = 0
     }
 
     componentDidMount() {
@@ -54,6 +57,10 @@ class InfiniteScroll extends React.Component {
         const {
             horizontal,
             onScroll,
+            onScrollUp,
+            onScrollDown,
+            onScrollLeft,
+            onScrollRight,
             onReachRight,
             onReachLeft,
             onReachTop,
@@ -85,6 +92,21 @@ class InfiniteScroll extends React.Component {
             }
             scrolledTo = scrollTop;
         }
+
+        if (scrollTop < this.lastScrollTop) {
+            onScrollUp(scrollTop)
+        } else if (scrollTop > this.lastScrollTop) {
+            onScrollDown(scrollTop)
+        }
+
+        if (scrollLeft < this.lastScrollLeft) {
+            onScrollLeft(scrollLeft)
+        } else if (scrollLeft > this.lastScrollLeft) {
+            onScrollRight(scrollLeft)
+        }
+
+        this.lastScrollTop = scrollTop
+        this.lastScrollLeft = scrollLeft
 
         onScroll(scrolledTo);
     }
@@ -120,6 +142,10 @@ InfiniteScroll.propTypes = {
     onReachLeft: PropTypes.func,
     onReachRight: PropTypes.func,
     onScroll: PropTypes.func,
+    onScrollUp: PropTypes.func,
+    onScrollDown: PropTypes.func,
+    onScrollLeft: PropTypes.func,
+    onScrollRight: PropTypes.func,
     position: PropTypes.number,
 };
 
@@ -129,6 +155,10 @@ InfiniteScroll.defaultProps = {
     onReachLeft: f => f,
     onReachRight: f => f,
     onScroll: f => f,
+    onScrollUp: f => f,
+    onScrollDown: f => f,
+    onScrollLeft: f => f,
+    onScrollRight: f => f,
     position: 0,
 };
 

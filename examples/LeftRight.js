@@ -1,5 +1,5 @@
 import React from 'react';
-import InfiniteScroll from '../src';
+import InfiniteScroll from './InfiniteScroll'
 
 export default class LeftRightExample extends React.Component {
     constructor(props) {
@@ -61,22 +61,26 @@ export default class LeftRightExample extends React.Component {
     }
 
     handleOnScroll(position) {
-        console.log('Scroll to ', position);
+        // console.log('Scroll to ', position);
+    }
+
+    handleOnScrollLeft(position) {
+        console.log('Scroll left to ', position);
+    }
+
+    handleOnScrollRight(position) {
+        console.log('Scroll right to ', position);
     }
 
     render() {
         return (
-            <div
-                style={{
-                    width: '200px',
-                    height: '200px',
-                    WebkitOverflowScrolling: 'touch',
-                }}
-            >
+            <div style={{ width: '200px', height: '200px' }}>
                 <InfiniteScroll
                     onReachLeft={this.handleScrollLeft}
                     onReachRight={this.handleScrollRight}
                     onScroll={this.handleOnScroll}
+                    onScrollLeft={this.handleOnScrollLeft}
+                    onScrollRight={this.handleOnScrollRight}
                     position={10}
                     horizontal
                 >

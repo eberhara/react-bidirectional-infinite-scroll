@@ -1,5 +1,5 @@
 import React from 'react';
-import InfiniteScroll from '../src';
+import InfiniteScroll from './InfiniteScroll'
 
 export default class UpDownExample extends React.Component {
     constructor(props) {
@@ -11,6 +11,8 @@ export default class UpDownExample extends React.Component {
         this.handleScrollDown = this.handleScrollDown.bind(this);
         this.handleScrollUp = this.handleScrollUp.bind(this);
         this.handleOnScroll = this.handleOnScroll.bind(this);
+        this.handleOnScrollUp = this.handleOnScrollUp.bind(this);
+        this.handleOnScrollDown = this.handleOnScrollDown.bind(this);
     }
 
     componentWillMount() {
@@ -59,22 +61,26 @@ export default class UpDownExample extends React.Component {
     }
 
     handleOnScroll(position) {
-        console.log('Scroll to ', position);
+        // console.log('Scroll to ', position);
+    }
+
+    handleOnScrollUp(position) {
+        console.log('Scroll up to ', position);
+    }
+
+    handleOnScrollDown(position) {
+        console.log('Scroll down to ', position);
     }
 
     render() {
         return (
-            <div
-                style={{
-                    height: '200px',
-                    width: '300px',
-                    WebkitOverflowScrolling: 'touch',
-                }}
-            >
+            <div style={{ height: '200px', width: '300px' }}>
                 <InfiniteScroll
                     onReachBottom={this.handleScrollDown}
                     onReachTop={this.handleScrollUp}
                     onScroll={this.handleOnScroll}
+                    onScrollUp={this.handleOnScrollUp}
+                    onScrollDown={this.handleOnScrollDown}
                     position={50}
                 >
                     {this.state.items}
@@ -83,3 +89,5 @@ export default class UpDownExample extends React.Component {
         );
     }
 }
+
+
