@@ -1,37 +1,72 @@
 {
-  "name": "react-bidirectional-infinite-scroll-2",
-  "version": "1.0.0",
-  "description": "react-bidirectional-infinite-scroll-2 React component",
+  "name": "react-bidirectional-infinite-scroll",
+  "version": "2.0.0",
+  "description": "Bidirectional infinite scroll written using react",
   "main": "lib/index.js",
-  "module": "es/index.js",
   "files": [
-    "css",
     "es",
-    "lib",
-    "umd"
+    "lib"
   ],
   "scripts": {
     "build": "nwb build-react-component",
     "clean": "nwb clean-module && nwb clean-demo",
+    "lint": "eslint src demo",
+    "lint:fix": "eslint src demo --fix",
     "start": "nwb serve-react-demo",
     "test": "nwb test-react",
     "test:coverage": "nwb test-react --coverage",
-    "test:watch": "nwb test-react --server"
+    "test:watch": "nwb test-react --server",
+    "storybook": "start-storybook -p 9001",
+    "storybook:build": "build-storybook",
+    "storybook:publish": "gh-pages -d storybook-static"
   },
   "dependencies": {},
   "peerDependencies": {
-    "react": "16.x"
+    "prop-types": "15.x",
+    "react": "15.x || 16.x",
+    "react-dom": "15.x || 16.x"
   },
   "devDependencies": {
+    "@storybook/react": "^3.3.14",
+    "ajv": "^6.1.1",
+    "babel-eslint": "^8.2.2",
+    "babel-preset-airbnb": "^2.4.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "chai": "^4.1.2",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "eslint": "^4.18.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
+    "gh-pages": "^1.1.0",
+    "inferno": "^3.10.1",
     "nwb": "0.21.x",
+    "prop-types": "^15.6.0",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-addons-test-utils": "^15.6.2",
+    "react-dom": "^16.2.0",
+    "sinon": "^4.4.1"
   },
-  "author": "",
-  "homepage": "",
+  "author": "Andre Eberhardt - santos.eberhardt@gmail.com",
   "license": "MIT",
-  "repository": "",
+  "bugs": {
+    "url": "https://github.com/eberhara/react-bidirectional-infinite-scroll/issues"
+  },
+  "homepage": "https://github.com/eberhara/react-bidirectional-infinite-scroll",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eberhara/react-bidirectional-infinite-scroll.git"
+  },
   "keywords": [
-    "react-component"
-  ]
+    "react",
+    "react-component",
+    "infinite-scroll"
+  ],
+  "engines": {
+    "node": "^9.2.0 || ^8.0.0",
+    "npm": "^5.5.1"
+  }
 }

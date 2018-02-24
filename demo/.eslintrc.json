@@ -1,0 +1,9 @@
+{
+  "extends": "../.eslintrc.json",
+  "rules": {
+    "no-console": "off",
+    "no-mixed-operators": "off",
+    "react/no-did-mount-set-state": "off",
+    "react/no-did-update-set-state": "off"
+  }
+}
