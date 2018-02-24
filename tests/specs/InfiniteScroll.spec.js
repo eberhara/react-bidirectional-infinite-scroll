@@ -12,6 +12,10 @@ describe('<InfiniteScroll />', () => {
         wrapper.instance().props.onReachTop();
         wrapper.instance().props.onReachRight();
         wrapper.instance().props.onReachLeft();
+        wrapper.instance().props.onScrollUp();
+        wrapper.instance().props.onScrollDown();
+        wrapper.instance().props.onScrollLeft();
+        wrapper.instance().props.onScrollRight();
         wrapper.instance().componentDidMount();
         wrapper.instance().componentDidUpdate({});
         expect(wrapper.text()).to.equal('foo');
@@ -253,5 +257,140 @@ describe('<InfiniteScroll />', () => {
         wrapper.instance().handleScroll();
         expect(onReachLeft.calledOnce).to.equal(false);
         expect(onReachRight.calledOnce).to.equal(false);
+    });
+
+    it('should render a vertical scroll and fire onScrollUp', () => {
+        const onScrollUp = sinon.stub();
+        const wrapper = shallow(
+            <InfiniteScroll
+                onScrollUp={onScrollUp}
+            >
+                foo
+            </InfiniteScroll>
+        );
+        wrapper.instance().lastScrollTop = 50;
+        wrapper.instance().refs = {
+            scroller: {
+                firstChild: {
+                    offsetTop: 0,
+                    offsetLeft: 0,
+                },
+                lastChild: {
+                    offsetTop: 100,
+                    offsetHeight: 100,
+                    offsetLeft: 0,
+                    offsetWidth: 100,
+                },
+                scrollTop: 10,
+                offsetTop: 0,
+                scrollLeft: 0,
+                offsetLeft: 0,
+                offsetHeight: 100,
+                offsetWidth: 100,
+            },
+        };
+        wrapper.instance().handleScroll();
+        expect(onScrollUp.calledOnce).to.equal(true);
+    });
+
+    it('should render a vertical scroll and fire onScrollDown', () => {
+        const onScrollDown = sinon.stub();
+        const wrapper = shallow(
+            <InfiniteScroll
+                onScrollDown={onScrollDown}
+            >
+                foo
+            </InfiniteScroll>
+        );
+        wrapper.instance().refs = {
+            scroller: {
+                firstChild: {
+                    offsetTop: 0,
+                    offsetLeft: 0,
+                },
+                lastChild: {
+                    offsetTop: 100,
+                    offsetHeight: 100,
+                    offsetLeft: 0,
+                    offsetWidth: 100,
+                },
+                scrollTop: 10,
+                offsetTop: 0,
+                scrollLeft: 10,
+                offsetLeft: 0,
+                offsetHeight: 100,
+                offsetWidth: 100,
+            },
+        };
+        wrapper.instance().handleScroll();
+        expect(onScrollDown.calledOnce).to.equal(true);
+    });
+
+it('should render a horizontal scroll and fire onScrollLeft', () => {
+        const onScrollLeft = sinon.stub();
+        const wrapper = shallow(
+            <InfiniteScroll
+                onScrollLeft={onScrollLeft}
+            >
+                foo
+            </InfiniteScroll>
+        );
+        wrapper.instance().lastScrollLeft = 50;
+
+        wrapper.instance().refs = {
+            scroller: {
+                firstChild: {
+                    offsetTop: 0,
+                    offsetLeft: 0,
+                },
+                lastChild: {
+                    offsetTop: 0,
+                    offsetHeight: 100,
+                    offsetLeft: 100,
+                    offsetWidth: 100,
+                },
+                scrollTop: 0,
+                offsetTop: 0,
+                scrollLeft: 10,
+                offsetLeft: 0,
+                offsetHeight: 100,
+                offsetWidth: 100,
+            },
+        };
+        wrapper.instance().handleScroll();
+        expect(onScrollLeft.calledOnce).to.equal(true);
+    });
+
+    it('should render a horizontal scroll and fire onScrollRight', () => {
+        const onScrollRight = sinon.stub();
+        const wrapper = shallow(
+            <InfiniteScroll
+                onScrollRight={onScrollRight}
+            >
+                foo
+            </InfiniteScroll>
+        );
+        wrapper.instance().refs = {
+            scroller: {
+                firstChild: {
+                    offsetTop: 0,
+                    offsetLeft: 0,
+                },
+                lastChild: {
+                    offsetTop: 0,
+                    offsetHeight: 100,
+                    offsetLeft: 100,
+                    offsetWidth: 100,
+                },
+                scrollTop: 0,
+                offsetTop: 0,
+                scrollLeft: 10,
+                offsetLeft: 0,
+                offsetHeight: 100,
+                offsetWidth: 100,
+            },
+        };
+        wrapper.instance().handleScroll();
+        expect(onScrollRight.calledOnce).to.equal(true);
     });
 });
