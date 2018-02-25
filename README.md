@@ -9,8 +9,8 @@
 [build-badge]: https://img.shields.io/travis/eberhara/react-bidirectional-infinite-scroll/master.png?style=flat-square
 [build]: https://travis-ci.org/eberhara/react-bidirectional-infinite-scroll
 
-[npm-badge]: https://img.shields.io/npm/v/npm-package.png?style=flat-square
-[npm]: https://www.npmjs.org/package/npm-package
+[npm-badge]: https://img.shields.io/npm/v/react-bidirectional-infinite-scroll.png?style=flat-square
+[npm]: https://www.npmjs.org/package/react-bidirectional-infinite-scroll
 
 [coveralls-badge]: https://img.shields.io/coveralls/eberhara/react-bidirectional-infinite-scroll/master.png?style=flat-square
 [coveralls]: https://coveralls.io/github/eberhara/react-bidirectional-infinite-scroll
