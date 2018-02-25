@@ -1,6 +1,7 @@
 # react-bidirectional-infinite-scroll
 
 [![Travis][build-badge]][build]
+[![node version][node-badge]][npm]
 [![npm package][npm-badge]][npm]
 [![Coveralls][coveralls-badge]][coveralls]
 
@@ -11,6 +12,7 @@
 
 [npm-badge]: https://img.shields.io/npm/v/react-bidirectional-infinite-scroll.png?style=flat-square
 [npm]: https://www.npmjs.org/package/react-bidirectional-infinite-scroll
+[node-badge]: https://img.shields.io/node/v/react-bidirectional-infinite-scroll.svg?style=flat-square
 
 [coveralls-badge]: https://img.shields.io/coveralls/eberhara/react-bidirectional-infinite-scroll/master.png?style=flat-square
 [coveralls]: https://coveralls.io/github/eberhara/react-bidirectional-infinite-scroll
