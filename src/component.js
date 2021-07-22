@@ -67,14 +67,14 @@ export default class extends Component {
       onReachLeft
     } = this.props
 
-    const leftEdge = firstChild.offsetLeft
-    const rightEdge = lastChild.offsetLeft + lastChild.offsetWidth
+    const leftEdge = firstChild && firstChild.offsetLeft
+    const rightEdge = lastChild && (lastChild.offsetLeft + lastChild.offsetWidth)
     const scrolledLeft = scrollLeft + offsetLeft
     const scrolledRight = scrolledLeft + offsetWidth
 
-    if (scrolledRight >= rightEdge) {
+    if (rightEdge && scrolledRight >= rightEdge) {
       onReachRight()
-    } else if (scrolledLeft <= leftEdge) {
+    } else if (leftEdge && scrolledLeft <= leftEdge) {
       onReachLeft()
     }
   }
@@ -93,14 +93,14 @@ export default class extends Component {
       onReachBottom
     } = this.props
 
-    const topEdge = firstChild.offsetTop
-    const bottomEdge = lastChild.offsetTop + lastChild.offsetHeight
+    const topEdge = firstChild && firstChild.offsetTop
+    const bottomEdge = lastChild && (lastChild.offsetTop + lastChild.offsetHeight)
     const scrolledUp = scrollTop + offsetTop
     const scrolledDown = scrolledUp + offsetHeight
 
-    if (scrolledDown >= bottomEdge) {
+    if (bottomEdge && scrolledDown >= bottomEdge) {
       onReachBottom()
-    } else if (scrolledUp <= topEdge) {
+    } else if (topEdge && scrolledUp <= topEdge) {
       onReachTop()
     }
   }

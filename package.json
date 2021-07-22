@@ -64,9 +64,5 @@
     "react",
     "react-component",
     "infinite-scroll"
-  ],
-  "engines": {
-    "node": "^9.6.1 || ^8.0.0",
-    "npm": "^5.6.0"
-  }
+  ]
 }
